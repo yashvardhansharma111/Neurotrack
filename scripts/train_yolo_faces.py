@@ -4,7 +4,7 @@ from pathlib import Path
 import yaml, torch
 
 def main():
-    ROOT = Path(r"D:\Neurotrack")
+    ROOT = Path(__file__).resolve().parent.parent
     DATASET = ROOT / "datasets" / "widerface_yolo"
     DATA_YAML = ROOT / "datasets" / "widerface_yolo.yaml"
     MODELS_DIR = ROOT / "models"
@@ -15,7 +15,7 @@ def main():
     if not DATA_YAML.exists():
         with open(DATA_YAML, "w") as f:
             yaml.safe_dump({
-                "path": "D:/Neurotrack/datasets/widerface_yolo",
+                "path": f"{ROOT}/widerface_yolo",
                 "train": "images/train",
                 "val": "images/val",
                 "names": ["face"]
